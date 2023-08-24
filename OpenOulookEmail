@@ -1,0 +1,33 @@
+Sub SendEmails()
+
+Dim EmailApp As Outlook.Application
+Set EmailApp = New Outlook.Application
+Dim EmailItem As Outlook.MailItem
+Set EmailItem = EmailApp.CreateItem(olMailItem)
+
+'Dim Source As String
+
+Dim ol As Outlook.Application
+Dim olMail As Outlook.MailItem
+
+Set ol = New Outlook.Application
+Set olMail = ol.CreateItem(olMailItem)
+
+EmailItem.To = " "
+EmailItem.CC = " "
+EmailItem.Subject = "Qnote Created: "
+If ActiveSheet.Name = "F2" Then
+    EmailItem.HTMLBody = " Xxx,<p>" & _
+    "Q-Note Created: " & ActiveWorkbook.ActiveSheet.Range("H3") & " and routed to MRBE"
+ElseIf ActiveSheet.Name = "F3" Then
+     EmailItem.HTMLBody = " Xxx,<p>" & _
+    "Q-Note Created: " & ActiveWorkbook.ActiveSheet.Range("H3") & " and routed to MRBE"
+ElseIf ActiveSheet.Name = "Deviation Waiver" Then
+     EmailItem.HTMLBody = " Xxx,<p>" & _
+    "Q-Note Created: " & ActiveWorkbook.ActiveSheet.Range("H3") & " and routed to MRBE"
+End If
+
+'olMail.Display
+EmailItem.Display
+
+End Sub
