@@ -1,0 +1,17 @@
+Sub ClearContents()
+If ActiveSheet.Name = "F2" Then
+    ActiveWorkbook.ActiveSheet.Range("B3:B13").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("B18:B23").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("H3").ClearContents
+ElseIf ActiveSheet.Name = "F3" Then
+    ActiveWorkbook.ActiveSheet.Range("B3:B11").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("B16:B21").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("H3").ClearContents
+ElseIf ActiveSheet.Name = "Deviation Waiver" Then
+    ActiveWorkbook.ActiveSheet.Range("B3:B12").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("B17:B22").ClearContents
+    ActiveWorkbook.ActiveSheet.Range("H3").ClearContents
+
+End If
+
+End Sub
