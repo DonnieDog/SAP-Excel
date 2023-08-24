@@ -1,0 +1,19 @@
+Sub SendEamil_Example1()
+Dim EmailApp As Outlook.Application
+Set EmailApp = New Outlook.Application
+Dim EmailItem As Outlook.MailItem
+Set EmailItem = EmailApp.CreateItem(olMailItem)
+
+'Dim Source As String
+
+EmailItem.To = "donovan.j.robbins@lmco.com"
+EmailItem.CC = "donovan.j.robbins@lmco.com"
+EmailItem.Subject = "Qnote: "
+EmailItem.HTMLBody = "Q-Note Created: " & ActiveWorkbook.ActiveSheet.Range("H3")
+
+                     
+'Source = ThisWorkbook.FullName 'Add Attachment
+'EmailItem.Attachments.Add Source
+
+EmailItem.Send 'Send Email
+End Sub
