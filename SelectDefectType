@@ -1,0 +1,140 @@
+Sub SelectCell()
+
+Dim testRange As Range
+Dim myRange As Range
+'Dim c As Range
+
+
+
+
+'Set the range
+Set testRange = Range("M7:M35")
+
+'Get the cell or range that the user selected
+Set myRange = Selection
+'Check if the selection is inside the range.
+If Intersect(testRange, myRange) Is Nothing Then
+    'Selection is NOT inside the range.
+
+    MsgBox "Please select a cell within the table."
+
+       
+ElseIf Selection.Value = Range("M7").Text Then
+    Range("C3").Select
+    'PRINTED WIRING BOARDS/FLXPRNT - 00001000
+    
+ElseIf Selection.Value = Range("M8") Then
+    Range("N3").Select
+    'PWB COUPON NONCONFORMANCE - 00002000
+
+ElseIf Selection.Value = Range("M9") Then
+    Range("C41").Select
+    'ELECTRICAL ASSEMBLY (FAB ONLY) - 00003000
+
+ElseIf Selection.Value = Range("M10") Then
+    Range("O41").Select
+    'CONNECTORS AND WIRE HARNESS ASSEMBLIES - 00004000
+
+ElseIf Selection.Value = Range("M11") Then
+    Range("C108").Select
+    'MATERIAL -00005000
+
+ElseIf Selection.Value = Range("M12") Then
+    Range("P88").Select
+    'MECHANICAL DETAIL / PART - 00006000
+
+ElseIf Selection.Value = Range("M13") Then
+    Range("C136").Select
+    'MECHANICAL ASSEMBLY - 00007000
+
+ElseIf Selection.Value = Range("M14") Then
+    Range("P133").Select
+    'WELDING - 00008000
+
+ElseIf Selection.Value = Range("M15") Then
+    Range("B159").Select
+    'TUBING - 00009000
+
+ElseIf Selection.Value = Range("M16") Then
+    Range("P158").Select
+    'FINISH - 00010000
+
+ElseIf Selection.Value = Range("M17") Then
+    Range("B174").Select
+    'CASTING - 00011000
+
+ElseIf Selection.Value = Range("M18") Then
+    Range("O174").Select
+    'DOCUMENTATION - 00012000
+
+ElseIf Selection.Value = Range("M19") Then
+    Range("B183").Select
+    'COMPLIANCE - 000130000
+
+ElseIf Selection.Value = Range("M20") Then
+    Range("O190").Select
+    'WORK INSTRUCTIONS - 00014000
+
+ElseIf Selection.Value = Range("M21") Then
+    Range("B202").Select
+    'LIMITS - 00015000
+
+ElseIf Selection.Value = Range("M22") Then
+    Range("O200").Select
+    'MARKING - 00016000
+
+ElseIf Selection.Value = Range("M23") Then
+    Range("B213").Select
+    'PACKAGING/HANDLING/KITTING - 00017000
+
+ElseIf Selection.Value = Range("M24") Then
+    Range("O217").Select
+    'SOFTWARE - 00018000
+
+ElseIf Selection.Value = Range("M25") Then
+    Range("B223").Select
+    'TEST EQUIPMENT - 00019000
+
+ElseIf Selection.Value = Range("M26") Then
+    Range("O227").Select
+    'TEST - 00020000
+
+ElseIf Selection.Value = Range("M27") Then
+    Range("C234").Select
+    'RIVETS - 00021000
+    
+ElseIf Selection.Value = Range("M28") Then
+    Range("O240").Select
+    'TOOLING - 00022000
+    
+ElseIf Selection.Value = Range("M29") Then
+    Range("C247").Select
+    'WIRE BONDING - 00023000
+ElseIf Selection.Value = Range("M30") Then
+    Range("O252").Select
+    'DETECTOR AND IDC - 00024000
+
+ElseIf Selection.Value = Range("M31") Then
+    Range("C261").Select
+    'OCC DETAIL/PART - 00025000
+
+ElseIf Selection.Value = Range("M32") Then
+    Range("O266").Select
+    'DEWAR NON RATED - 00026000
+
+ElseIf Selection.Value = Range("M33") Then
+    Range("C286").Select
+    'DEWAR RATED - 00027000
+
+ElseIf Selection.Value = Range("M34") Then
+    Range("P282").Select
+    'DEWAR INTEGRATION - 00028000
+
+ElseIf Selection.Value = Range("M35") Then
+    Range("C310").Select
+    'DEWAR TEST - 00029000
+
+End If
+
+
+End Sub
