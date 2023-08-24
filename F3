@@ -1,0 +1,85 @@
+Option Explicit
+Public SapGuiAuto
+Public objGui  As GuiApplication
+Public objConn As GuiConnection
+Public session As GuiSession
+
+Sub SAPDownloadAttachment()
+
+Set SapGuiAuto = GetObject("SAPGUI")
+Set objGui = SapGuiAuto.GetScriptingEngine
+Set objConn = objGui.Children(0)
+Set session = objConn.Children(0)
+
+Dim Materials As String
+Dim Plant As String
+Dim RevisionLv As String
+Dim RefNum As String
+Dim ComplaintQty As String
+Dim RefQty As String
+Dim DefQty As String
+Dim Coding As String
+Dim Coding2 As String
+
+Dim NumberOfDefects As String
+Dim CodeGroup As String
+Dim DefectType As String
+Dim CodeGroup2 As String
+Dim RptLev As String
+Dim DefectVal As String
+
+
+Materials = ActiveWorkbook.ActiveSheet.Range("B3")
+Plant = ActiveWorkbook.ActiveSheet.Range("B4")
+RevisionLv = ActiveWorkbook.ActiveSheet.Range("B5")
+RefNum = ActiveWorkbook.ActiveSheet.Range("B6")
+ComplaintQty = ActiveWorkbook.ActiveSheet.Range("B7")
+RefQty = ActiveWorkbook.ActiveSheet.Range("B8")
+DefQty = ActiveWorkbook.ActiveSheet.Range("B9")
+Coding = ActiveWorkbook.ActiveSheet.Range("B10")
+Coding2 = ActiveWorkbook.ActiveSheet.Range("B11")
+
+NumberOfDefects = ActiveWorkbook.ActiveSheet.Range("B16")
+CodeGroup = ActiveWorkbook.ActiveSheet.Range("B17")
+DefectType = ActiveWorkbook.ActiveSheet.Range("B18")
+CodeGroup2 = ActiveWorkbook.ActiveSheet.Range("B19")
+RptLev = ActiveWorkbook.ActiveSheet.Range("B20")
+DefectVal = ActiveWorkbook.ActiveSheet.Range("B21")
+
+session.findById("wnd[0]").maximize
+session.findById("wnd[0]/tbar[0]/okcd").Text = "QM01"
+session.findById("wnd[0]").sendVKey 0
+session.findById("wnd[0]/usr/ctxtRIWO00-QMART").Text = "F3"
+session.findById("wnd[0]/usr/ctxtRIWO00-QMART").caretPosition = 2
+session.findById("wnd[0]/tbar[1]/btn[25]").press
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_1:SAPLIQS0:7322/subOBJEKT:SAPMQM00:3010/ctxtRQM00-MATNR").Text = Materials
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_1:SAPLIQS0:7322/subOBJEKT:SAPMQM00:3010/ctxtRQM00-MAWERK").Text = Plant
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_1:SAPLIQS0:7322/subOBJEKT:SAPMQM00:3010/ctxtVIQMEL-REVLV").Text = RevisionLv
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_2:SAPLIQS0:7740/subBELEG:SAPMQM00:3021/txtVIQMEL-REFNUM").Text = RefNum
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_3:SAPLIQS0:7750/txtVIQMEL-RKMNG").Text = ComplaintQty
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_3:SAPLIQS0:7750/txtVIQMEL-BZMNG").Text = RefQty
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_3:SAPLIQS0:7750/txtVIQMEL-MGFRD").Text = DefQty
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_5:SAPLIQS0:7710/ctxtVIQMEL-QMGRP").Text = Coding
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_5:SAPLIQS0:7710/ctxtVIQMEL-QMCOD").Text = Coding2
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_5:SAPLIQS0:7710/ctxtVIQMEL-QMCOD").SetFocus
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB01/ssubSUB_GROUP_10:SAPLIQS0:7235/subCUSTOM_SCREEN:SAPLIQS0:7212/subSUBSCREEN_5:SAPLIQS0:7710/ctxtVIQMEL-QMCOD").caretPosition = 0
+
+session.findById("wnd[0]").sendVKey 0
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10").Select
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/ctxtVIQMFE-OTGRP[6,0]").Text = RptLev
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/ctxtVIQMFE-OTEIL[7,0]").Text = DefectType
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/ctxtVIQMFE-FEGRP[3,0]").Text = CodeGroup
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/ctxtVIQMFE-FECOD[4,0]").Text = CodeGroup2
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/txtVIQMFE-ANZFEHLER[2,0]").Text = NumberOfDefects
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/txtRQM00-FEHLBEWC[8,0]").Text = DefectVal
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/txtRQM00-FEHLBEWC[8,0]").SetFocus
+session.findById("wnd[0]/usr/tabsTAB_GROUP_10/tabp10\TAB10/ssubSUB_GROUP_10:SAPLIQS0:7210/tabsTAB_GROUP_20/tabp20\TAB01/ssubSUB_GROUP_20:SAPLIQS0:7110/tblSAPLIQS0POSITION_VIEWER/txtRQM00-FEHLBEWC[8,0]").caretPosition = 0
+
+
+ActiveWorkbook.ActiveSheet.Range("H3") = session.findById("wnd[0]/usr/subSCREEN_1:SAPLIQS0:1070/ctxtVIQMEL-QMNUM").Text
+
+
+
+
+
+End Sub
